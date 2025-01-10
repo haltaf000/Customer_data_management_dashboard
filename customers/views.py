@@ -13,6 +13,7 @@ class IsAdminOrReadOnly(BasePermission):
         if request.method in ['GET', 'HEAD', 'OPTIONS']:
             return True 
         return request.user and request.user.is_staff 
+    
 class StandardResultsPagination(PageNumberPagination):
     page_size = 10
     page_size_query_param = 'page_size'
@@ -33,7 +34,7 @@ class CustomerViewSet(viewsets.ModelViewSet):
 class AddressViewSet(viewsets.ModelViewSet):
     queryset = Address.objects.all()
     serializer_class = AddressSerializer
-    pagination_class = StandardResultsPagination  # Add pagination here as well
+    pagination_class = StandardResultsPagination 
     authentication_classes = [SessionAuthentication, BasicAuthentication]
     permission_classes = [IsAuthenticated]
 
@@ -41,6 +42,6 @@ class AddressViewSet(viewsets.ModelViewSet):
 class ContactNoteViewSet(viewsets.ModelViewSet):
     queryset = ContactNote.objects.all()
     serializer_class = ContactNoteSerializer
-    pagination_class = StandardResultsPagination  # Add pagination here as well
+    pagination_class = StandardResultsPagination  
     authentication_classes = [SessionAuthentication, BasicAuthentication]
     permission_classes = [IsAuthenticated] 
