@@ -46,5 +46,3 @@ class ContactNoteViewSet(viewsets.ModelViewSet):
     authentication_classes = [SessionAuthentication, BasicAuthentication]
     permission_classes = [IsAuthenticated] 
 
-def something():
-    pass
